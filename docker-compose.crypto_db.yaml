@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  crypto-postgres:
+    image: postgres:15
+    container_name: crypto_postgres
+    environment:
+      POSTGRES_USER: crypto_user
+      POSTGRES_PASSWORD: crypto_pass
+      POSTGRES_DB: crypto_db
+    ports:
+      - "5434:5432" #5434 - my port/ 5432 - psql in cont
+    volumes:
+      - crypto_pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  crypto_pgdata:
